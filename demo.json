@@ -1,0 +1,15 @@
+{
+    "cpt_user_id_1": {
+        "discordUid": "1025770042245251122",
+        "minecraftUuid": "79ef438d-69ea-473c-99cd-6a5ec34c6736",
+        "hytaleAid": "69eb8202-bbfa-4a72-a1b1-3523f33a70f2",
+        "mcServers": {
+            "server_id_1": "enabled",
+            "server_id_2": "disabled"
+        },
+        "hytaleServers": {
+            "server_id_3": "enabled",
+            "server_id_4": "disabled"
+        }
+    }
+}
