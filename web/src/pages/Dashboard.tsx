@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import {
-  User,
   LogOut,
   Link2,
   Server,
@@ -47,8 +46,8 @@ export default function Dashboard({ onLogout }: Props) {
       setProfile(profileRes.data);
       setMcServers(mcRes.data);
       setHtServers(htRes.data);
-      setMcUuid(profileRes.data.user.minecraft_uuid || '');
-      setHtAid(profileRes.data.user.hytale_aid || '');
+      setMcUuid(profileRes.data.user.minecraftUuid || '');
+      setHtAid(profileRes.data.user.hytaleAid || '');
     } catch (error) {
       console.error('Failed to load data:', error);
       showMessage('error', 'Failed to load profile data');

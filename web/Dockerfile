@@ -1,22 +1,30 @@
-# Build stage
-FROM node:18-alpine AS builder
+# Use Node 20 slim for better compatibility
+FROM node:20-slim
 
+# Install curl for healthcheck
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Set working directory
 WORKDIR /app
 
+# Copy package files
 COPY package*.json ./
-RUN npm i
 
+# Install dependencies
+RUN npm install
+
+# Copy source code
 COPY . .
+
+# Build the application
 RUN npm run build
 
-# Production stage
-FROM nginx:alpine
+# Expose port
+EXPOSE 5173
 
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Healthcheck (checking correct port 5173, not 8001)
+HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:5173/ || exit 1
 
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Start the preview server
+CMD ["npm", "run", "preview", "--", "--host", "0.0.0.0", "--port", "5173"]

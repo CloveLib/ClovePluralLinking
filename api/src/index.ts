@@ -78,8 +78,8 @@ async function startServer() {
 ║          ClovesPluralLink API Server                 ║
 ║                                                      ║
 ║  🚀 Server running on port ${PORT}                      ║
-║  🌐 Environment: ${process.env.NODE_ENV || 'development'}                    ║
-║  📝 API Docs: http://localhost:${PORT}/health          ║
+║  🌐 Environment: ${process.env.NODE_ENV || 'development'}                          ║
+║  📝 API Docs: http://localhost:${PORT}/health           ║
 ║                                                      ║
 ╚══════════════════════════════════════════════════════╝
       `);

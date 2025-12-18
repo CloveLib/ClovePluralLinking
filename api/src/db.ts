@@ -21,7 +21,7 @@ export default pool;
 export async function testConnection() {
     try {
         const connection = await pool.getConnection();
-        console.log(`✔️ Database ${process.env.DB_NAME} connected successfully!`);
+        console.log(`✔️   Database ${process.env.DB_NAME} connected successfully!`);
         connection.release();
         return true;
     } catch (er) {
